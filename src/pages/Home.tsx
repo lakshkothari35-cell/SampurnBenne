@@ -202,18 +202,24 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20" style={{ backgroundColor: COLORS.burntOrange }}>
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+      <section className="py-24" style={{ backgroundColor: COLORS.burntOrange }}>
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
           {[
             { label: 'Traditional Recipes', value: '50+' },
             { label: 'Happy Customers', value: '10k+' },
             { label: 'Years of Legacy', value: '15+' },
             { label: 'Authentic Spices', value: '100%' },
           ].map((stat, i) => (
-            <div key={i}>
-              <h5 className="text-5xl font-black text-white mb-2">{stat.value}</h5>
-              <p className="text-white/60 text-xs uppercase font-bold tracking-widest">{stat.label}</p>
-            </div>
+            <motion.div 
+              key={i}
+              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+            >
+              <h5 className="text-5xl lg:text-6xl font-black text-white mb-2 tracking-tighter">{stat.value}</h5>
+              <p className="text-white/60 text-[10px] uppercase font-bold tracking-[0.3em]">{stat.label}</p>
+            </motion.div>
           ))}
         </div>
       </section>
