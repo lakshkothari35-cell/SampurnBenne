@@ -1,0 +1,6 @@
+{
+  "name": "Sampurn Benne",
+  "description": "Premium cinematic 3D website for an authentic South Indian food brand in Surat, Gujarat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

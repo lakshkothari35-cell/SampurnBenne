@@ -1,0 +1,67 @@
+{
+  "entities": {
+    "MenuItem": {
+      "title": "MenuItem",
+      "description": "Representation of a dish in the menu",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string", "enum": ["Dosas", "Idli", "Vada", "Uttapam", "Filter Coffee", "South Indian Meals", "Desserts"] },
+        "imageUrl": { "type": "string" },
+        "isPopular": { "type": "boolean" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "price", "category", "imageUrl"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Customer testimonial",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" },
+        "isApproved": { "type": "boolean" }
+      },
+      "required": ["customerName", "rating", "comment", "date"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer order details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "items": { "type": "array" },
+        "total": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "delivering", "completed", "cancelled"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["customerName", "customerPhone", "items", "total", "status", "createdAt"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "Image for the gallery section",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "caption": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["imageUrl", "createdAt"]
+    }
+  },
+  "firestore": {
+    "menu": { "schema": "MenuItem", "description": "Collection of menu items" },
+    "reviews": { "schema": "Review", "description": "Collection of customer reviews" },
+    "orders": { "schema": "Order", "description": "Collection of orders" },
+    "gallery": { "schema": "GalleryItem", "description": "Collection of gallery images" }
+  }
+}
