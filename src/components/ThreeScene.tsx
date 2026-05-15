@@ -5,12 +5,17 @@ import * as THREE from 'three';
 import { COLORS } from '../constants';
 
 const FoodPlatter = () => {
+  const timer = useMemo(() => new THREE.Timer(), []);
   const group = useRef<THREE.Group>(null);
 
   useFrame((state) => {
     if (group.current) {
+      if (typeof timer.update === 'function') {
+        timer.update();
+      }
       group.current.rotation.y += 0.005;
-      group.current.position.y = Math.sin(state.clock.elapsedTime) * 0.1;
+      const elapsed = typeof timer.getElapsed === 'function' ? timer.getElapsed() : state.clock.getElapsedTime();
+      group.current.position.y = Math.sin(elapsed) * 0.1;
     }
   });
 
