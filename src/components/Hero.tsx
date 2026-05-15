@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import ThreeScene from './ThreeScene';
 import { BRAND_TAGLINE, BRAND_TAGLINE_SUB, COLORS } from '../constants';
+import BrandLogo from './BrandLogo';
 
 const Hero = () => {
   return (
@@ -20,43 +21,46 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 items-center gap-8 lg:gap-12 z-10 py-20 lg:py-0">
         <div className="flex flex-col gap-6 lg:gap-8 order-2 lg:order-1 text-center lg:text-left items-center lg:items-start">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex flex-col items-center lg:items-start gap-6"
           >
-            <span className="inline-block px-4 py-1 rounded-full bg-[#CC5500]/10 text-[#CC5500] text-[10px] lg:text-xs font-bold uppercase tracking-widest border border-[#CC5500]/20 mb-4">
-              Premium Dining Experience
-            </span>
-            <h2 className="text-5xl md:text-6xl lg:text-8xl font-black leading-[0.9] tracking-tighter" style={{ color: COLORS.ivory }}>
-              {BRAND_TAGLINE.split(' ').map((word, i) => (
-                <motion.span 
-                  key={i} 
-                  className="block"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + i * 0.1 }}
-                >
-                  {word === 'Benne' ? <span className="text-[#CC5500]">{word}</span> : word}
-                </motion.span>
-              ))}
-            </h2>
-            <p className="mt-6 text-base lg:text-xl text-[#FFFFF0]/60 max-w-md leading-relaxed font-medium mx-auto lg:mx-0">
-              {BRAND_TAGLINE_SUB}
-            </p>
+            <BrandLogo className="w-16 h-16 lg:w-20 lg:h-20" color="#CC5500" />
+            <div>
+              <span className="inline-block px-4 py-1 rounded-full bg-[#CC5500]/10 text-[#CC5500] text-[10px] lg:text-xs font-bold uppercase tracking-widest border border-[#CC5500]/20 mb-4">
+                Premium Dining Experience
+              </span>
+              <h2 className="text-5xl md:text-6xl lg:text-8xl font-black leading-[0.9] tracking-tighter" style={{ color: COLORS.ivory }}>
+                {BRAND_TAGLINE.split(' ').map((word, i) => (
+                  <motion.span 
+                    key={i} 
+                    className="block"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 + i * 0.1 }}
+                  >
+                    {word === 'Benne' ? <span className="text-[#CC5500]">{word}</span> : word}
+                  </motion.span>
+                ))}
+              </h2>
+              <p className="mt-6 text-base lg:text-xl text-[#FFFFF0]/60 max-w-md leading-relaxed font-medium mx-auto lg:mx-0">
+                {BRAND_TAGLINE_SUB}
+              </p>
+            </div>
           </motion.div>
 
-          <motion.div 
-            className="flex flex-wrap justify-center lg:justify-start gap-4"
+            <motion.div className="flex flex-wrap justify-center lg:justify-start gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
           >
-            <button className="px-8 lg:px-10 py-4 lg:py-5 bg-[#CC5500] text-white rounded-full font-black text-[10px] lg:text-sm uppercase tracking-[0.2em] shadow-[0_20px_50px_rgba(204,85,0,0.3)] hover:shadow-[0_25px_60px_rgba(204,85,0,0.5)] transition-all hover:-translate-y-1">
+            <a href="#menu" className="px-8 lg:px-10 py-4 lg:py-5 bg-[#CC5500] text-white rounded-full font-black text-[10px] lg:text-sm uppercase tracking-[0.2em] shadow-[0_20px_50px_rgba(204,85,0,0.3)] hover:shadow-[0_25px_60px_rgba(204,85,0,0.5)] transition-all hover:-translate-y-1 inline-block">
               Explore Menu
-            </button>
-            <button className="px-8 lg:px-10 py-4 lg:py-5 bg-transparent border-2 border-white/10 text-white rounded-full font-black text-[10px] lg:text-sm uppercase tracking-[0.2em] hover:bg-white/5 transition-all">
+            </a>
+            <a href="#about" className="px-8 lg:px-10 py-4 lg:py-5 bg-transparent border-2 border-white/10 text-white rounded-full font-black text-[10px] lg:text-sm uppercase tracking-[0.2em] hover:bg-white/5 transition-all inline-block">
               Our Story
-            </button>
+            </a>
           </motion.div>
 
           <motion.div 

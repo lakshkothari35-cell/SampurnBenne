@@ -1,9 +1,10 @@
 import Hero from '../components/Hero';
 import { motion, AnimatePresence } from 'motion/react';
-import { Coffee, Utensils, Star, MapPin, Plus, Check } from 'lucide-react';
+import { Coffee, Utensils, Star, MapPin, Plus, Check, Clock } from 'lucide-react';
 import { COLORS } from '../constants';
 import { useCart } from '../context/CartContext';
 import { useState } from 'react';
+import BrandLogo from '../components/BrandLogo';
 
 const Home = () => {
   const { addToCart } = useCart();
@@ -27,13 +28,16 @@ const Home = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               initial={{ opacity: 0, scale: 0.9 }}
               viewport={{ once: true }}
-              className="aspect-square bg-gradient-to-br from-[#CC5500]/10 to-transparent p-6 lg:p-12 rounded-[40px] lg:rounded-[60px] relative z-10"
+              className="aspect-square bg-gradient-to-br from-[#CC5500]/10 to-transparent p-6 lg:p-12 rounded-[40px] lg:rounded-[60px] relative z-10 flex items-center justify-center overflow-hidden"
             >
               <img 
                 src="https://images.unsplash.com/photo-1541288097918-74630468347a?auto=format&fit=crop&q=80&w=800" 
                 alt="Benne Dosa Making" 
-                className="w-full h-full object-cover rounded-[30px] lg:rounded-[40px] shadow-2xl transition-all duration-700"
+                className="w-full h-full object-cover rounded-[30px] lg:rounded-[40px] shadow-2xl transition-all duration-700 hover:scale-110"
               />
+              <div className="absolute inset-0 bg-[#CC5500]/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                <BrandLogo className="w-20 h-20" color="#FFFFF0" />
+              </div>
             </motion.div>
             <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#CC5500] rounded-full blur-[80px] opacity-10" />
             <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-[#D4AF37] rounded-full blur-[100px] opacity-10" />
@@ -47,21 +51,19 @@ const Home = () => {
             className="flex flex-col gap-6"
           >
             <div className="flex items-center gap-4 text-[#CC5500]">
+              <BrandLogo className="w-8 h-8" color="#CC5500" />
               <div className="w-12 h-[1px] bg-[#CC5500]" />
-              <span className="text-xs font-black uppercase tracking-[0.3em]">Our Legacy</span>
+              <span className="text-xs font-black uppercase tracking-[0.3em]">Our Story</span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter leading-tight text-[#0C0C0C]">
-              Tradition Rooted in <span className="text-[#CC5500]">Karnataka</span>
+              Tradition Rooted in <span className="text-[#CC5500]">Bangalore</span>
             </h2>
             <p className="text-base lg:text-lg text-[#0C0C0C]/70 leading-relaxed font-medium">
-              Sampurn Benne is more than just a restaurant; it's a culinary journey back to the streets of Davanagere. Our secret lies in the special "Benne" (butter) sourced from traditional dairies, and a roasting technique that ensures every dosa is a perfect golden miracle.
+              Authentic South Indian restaurant serving Bangalore-style Benne Dosa made with pure Nandini ghee and butter for rich flavor and crisp texture. We offer a wide range of dishes including soft idli, mini idli, crispy medu vada, and flavorful rice varieties like lemon rice, tomato rice, and curd rice. Enjoy traditional favorites like Khara Bath and Kesari Bath, along with freshly prepared filter coffee, iced filter coffee, and black coffee. Our podi masala is sourced directly from Bangalore to bring you true authentic taste. Perfect for breakfast, quick bites, and family dining.
             </p>
             <p className="text-[#0C0C0C]/40 italic border-l-2 border-[#CC5500] pl-6 py-2 text-sm lg:text-base">
-              "We don't just sell food, we serve memories of a heritage that dates back generations."
+              "We don't just craft dosas; we craft perfection. Every golden, buttery bite is a tribute to Bangalore's finest street food traditions."
             </p>
-            <button className="w-full lg:w-fit mt-4 px-8 py-4 border border-[#0C0C0C]/20 text-[#0C0C0C] rounded-full hover:bg-[#0C0C0C] hover:text-[#FFFFF0] transition-all font-bold uppercase tracking-widest text-xs">
-              Discover Our History
-            </button>
           </motion.div>
         </div>
       </section>
@@ -193,56 +195,42 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="flex justify-center mt-32">
-            <button className="px-12 py-5 border-2 border-[#CC5500] text-[#CC5500] rounded-full font-black text-sm uppercase tracking-[0.3em] hover:bg-[#CC5500] hover:text-[#FFFFF0] transition-all">
-              Order Online Now
-            </button>
-          </div>
+          {/* Order Online Now button removed */}
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-24" style={{ backgroundColor: COLORS.burntOrange }}>
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
-          {[
-            { label: 'Traditional Recipes', value: '50+' },
-            { label: 'Happy Customers', value: '10k+' },
-            { label: 'Years of Legacy', value: '15+' },
-            { label: 'Authentic Spices', value: '100%' },
-          ].map((stat, i) => (
-            <motion.div 
-              key={i}
-              whileInView={{ opacity: 1, scale: 1 }}
-              initial={{ opacity: 0, scale: 0.8 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <h5 className="text-5xl lg:text-6xl font-black text-white mb-2 tracking-tighter">{stat.value}</h5>
-              <p className="text-white/60 text-[10px] uppercase font-bold tracking-[0.3em]">{stat.label}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-      
       {/* Map/Contact Section */}
       <section id="contact" className="py-32 px-6" style={{ backgroundColor: COLORS.ivory }}>
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col gap-8">
-            <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-[#0C0C0C]">Find Us in the Heart of Surat</h2>
+            <h2 className="text-4xl lg:text-5xl font-black tracking-tighter text-[#0C0C0C]">Find Us in Vesu, Surat</h2>
             <div className="space-y-6">
               <div className="flex items-start gap-4">
                 <MapPin className="text-[#CC5500] mt-1 shrink-0" />
                 <div>
-                  <h6 className="font-bold text-[#0C0C0C]">Address</h6>
-                  <p className="text-[#0C0C0C]/60 text-sm">G-12, Premium Plaza, Vesu Main Road, Surat</p>
+                   <h6 className="font-bold text-[#0C0C0C]">Address</h6>
+                   <p className="text-[#0C0C0C]/60 text-sm italic mb-1">Rajmahal Complex, Opp. Lane of CB Patel Sports Club</p>
+                   <p className="text-[#0C0C0C]/60 text-sm font-black">GF - 33, Vesu, Surat, 395007</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <Coffee className="text-[#CC5500] mt-1 shrink-0" />
+                <Clock className="text-[#CC5500] mt-1 shrink-0" />
                 <div>
-                  <h6 className="font-bold text-[#0C0C0C]">Brew Hours</h6>
-                  <p className="text-[#0C0C0C]/60 text-sm">Mon - Sun: 7:00 AM - 11:00 PM</p>
+                   <h6 className="font-bold text-[#0C0C0C]">Operational Timeline</h6>
+                   <div className="text-[#0C0C0C]/60 text-xs space-y-1">
+                      <p><span className="font-black text-[#CC5500]">Sat-Sun:</span> 8 AM – 3 PM | 6:30 – 10:30 PM</p>
+                      <p><span className="font-black text-[#CC5500]">Mon:</span> 5 PM – 10:30 PM</p>
+                      <p><span className="font-black text-[#CC5500]">Tue-Fri:</span> 10 AM – 3 PM | 6:30 – 10:30 PM</p>
+                   </div>
                 </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                {['Vegetarian Only', 'Kids\' Menu'].map((opt) => (
+                  <div key={opt} className="flex items-center gap-2 p-3 bg-[#0C0C0C]/5 rounded-xl border border-[#0C0C0C]/5">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#CC5500]" />
+                    <span className="text-[10px] font-black uppercase tracking-widest text-[#0C0C0C]/60">{opt}</span>
+                  </div>
+                ))}
               </div>
             </div>
             <button className="w-full lg:w-fit px-8 py-4 bg-[#CC5500] text-white rounded-full text-xs font-black uppercase tracking-[0.2em] shadow-xl">
@@ -252,7 +240,7 @@ const Home = () => {
           
           <div className="aspect-video bg-[#0C0C0C] rounded-[30px] lg:rounded-[40px] overflow-hidden border border-[#0C0C0C]/10 relative grayscale hover:grayscale-0 transition-all">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14878.711200085!2d72.7833075!3d21.1444144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04d9a40000001%3A0xc4f54e601556819!2sVesu%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.2185566085!2d72.78310!3d21.14441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04d60!2sCB+Patel+Sports+Club!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
               className="w-full h-full grayscale"
               style={{ border: 0 }}
               loading="lazy"

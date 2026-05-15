@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { COLORS, APP_NAME } from '../constants';
+import BrandLogo from './BrandLogo';
 
 const LoadingScreen = () => {
   return (
@@ -16,14 +17,13 @@ const LoadingScreen = () => {
             scale: [1, 1.1, 1],
           }}
           transition={{
-            rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-            scale: { duration: 1, repeat: Infinity, ease: "easeInOut" }
+            rotate: { duration: 3, repeat: Infinity, ease: "linear" },
+            scale: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
           }}
-          className="w-24 h-24 border-4 border-[#CC5500] border-t-transparent rounded-full mb-8 relative"
+          className="mb-12 relative flex items-center justify-center"
         >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 bg-[#CC5500] rounded-full blur-xl opacity-20 animate-pulse" />
-          </div>
+          <div className="absolute inset-0 bg-[#CC5500] rounded-full blur-[60px] opacity-20" />
+          <BrandLogo className="w-24 h-24 relative z-10" color="#CC5500" />
         </motion.div>
         
         <motion.h1 
@@ -41,7 +41,7 @@ const LoadingScreen = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          Preparing Authentic Karnataka Taste...
+          Preparing Authentic Banglorian Taste...
         </motion.p>
       </motion.div>
     </div>
