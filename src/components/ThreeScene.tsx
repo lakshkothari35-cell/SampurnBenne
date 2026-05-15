@@ -155,7 +155,7 @@ const Steam = ({ count = 20, position = [0, 0.5, 0] }) => {
 
 export default function ThreeScene() {
   return (
-    <Canvas shadows dpr={[1, 2]} gl={{ antialias: true }}>
+    <Canvas shadows="percentage" dpr={[1, 2]} gl={{ antialias: true }}>
       <PerspectiveCamera makeDefault position={[0, 2, 7]} fov={45} />
       <OrbitControls 
         enableZoom={false} 
